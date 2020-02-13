@@ -1,76 +1,89 @@
-# Lab 1A: Creating an Azure Machine Learning Workspace
+# Lab 1A: Azure Machine Learningワークスペースを作成する
 
-In this lab, you will create the Azure Machine Learning workspace that you will use throughout the rest of this course.
+このラボでは、このコースの残りの部分で使用するAzure Machine Learningワークスペースを作成します。
 
 ## Before You Start
 
-If you do not already have one, you can sign up for a free trial at [https://azure.microsoft.com](https://azure.microsoft.com).
+まだお持ちでない場合は、[https://azure.microsoft.com]（https://azure.microsoft.com）で無料試用版にサインアップできます。
 
-If you are using an Azure Pass subscription, provided to you for this course, your account may not have been assigned to the subscription **Owner** role, which may be required for some operations in this course. To add your account to the **Owner** role:
+このコース用に提供されたAzure Passサブスクリプションを使用している場合、アカウントがサブスクリプション**所有者**ロールに割り当てられていない可能性があります。これは、このコースの一部の操作に必要な場合があります。アカウントを**所有者**ロールに追加するには：
 
-1. Sign into the [Azure portal](https://portal.azure.com) and view your **Subscriptions**.
-2. Select the subscription you created using an Azure pass (it will probably have a name similar to **Azure Pass - Sponsorship**).
-3. In the blade for your subscription, open the **My Permissions** page, and then click the link on it to view complete access details for the subscription.
-4. Under **Add role assignment**, click **Add**. Then select the following and click **Save**:
-    - **Role**: Owner
-    - **Assign access to**: Azure AD user, group, or service principal
-    - **Select**: The Microsoft account you used to sign into Azure.
+1. [Azureポータル]（https://portal.azure.com）にサインインして、**サブスクリプション**を表示します。
+2. Azureパスを使用して作成したサブスクリプションを選択します（おそらく**Azure Pass-スポンサーシップ**のような名前になります）。
+3.サブスクリプションのブレードで、**My Permissions**ページを開き、そのリンクをクリックして、サブスクリプションの完全なアクセス詳細を表示します。
+4. [**役割の割り当てを追加**]で、[**追加**]をクリックします。次に、以下を選択して**保存**をクリックします。
 
-## Task 1: Create an Azure ML Workspace
+- **役割**：所有者
+- **アクセスを割り当てる**：Azure ADユーザー、グループ、またはサービスプリンシパル
+- **選択**：Azureへのサインインに使用したMicrosoftアカウント。
 
-As its name suggests, a workspace is a centralized place to manage all of the Azure ML assets you need to work on a machine learning project.
 
-1. In the [Azure portal](https://portal.azure.com), create a new **Machine Learning** resource, specifying a unique workspace name and creating a new resource group in the **North Central US** or **UK South** region. Select the **Enterprise** workspace edition.
 
-   > **Note**: If you can't use the **North Central US** or **UK South** region, you may need to use *Notebook VMs* instead of *Container Instances* to complete the labs in this course due to [limited preview availability](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-instance).
+
+## Task 1: Azure MLワークスペースを作成する
+
+その名前が示すように、ワークスペースは、機械学習プロジェクトで作業するために必要なすべてのAzure ML資産を管理するための集中管理された場所です。
+
+1. [Azureポータル]（https://portal.azure.com）で、新しい** Machine Learning **リソースを作成し、一意のワークスペース名を指定して、** North Central US *に新しいリソースグループを作成します*または** UK South **地域。 ** Enterprise **ワークスペースエディションを選択します。
+
+
+   > **Note**: ** North Central US **または** UK South **リージョンを使用できない場合、[Container Instances *]ではなく[Notebook VMs]を使用して、[限定プレビュー]のためにこのコースのラボを完了する必要があります。可用性]（https://docs.microsoft.com/azure/machine-learning/service/concept-compute-instance）。
    >
-   > Basic edition workspaces have lower cost, but don't include capabilities like Auto ML, the Visual Designer, and data drift monitoring. For more details, see [Azure Machine Learning pricing](https://azure.microsoft.com/en-us/pricing/details/machine-learning/).
+   > Basicエディションのワークスペースは低コストですが、Auto ML、ビジュアルデザイナー、データドリフトモニタリングなどの機能は含まれません。詳細については、[Azure Machine Learningの価格設定]（https://azure.microsoft.com/en-us/pricing/details/machine-learning/）を参照してください。
 
-2. When the workspace and its associated resources have been created, view the workspace in the portal.
+2.ワークスペースとそれに関連するリソースが作成されたら、ポータルでワークスペースを表示します。
 
-## Task 2: Explore the Azure ML Studio Interface
+## Task 2: Azure ML Studioインターフェイスを調べる
 
-You can manage workspace assets in the Azure portal, but for data scientists, this tool contains lots of irrelevant information and links that relate to managing general Azure resources. An alternative, Azure ML-specific web interface for managing workspaces is available.
+Azureポータルでワークスペース資産を管理できますが、データサイエンティスト向けのこのツールには、一般的なAzureリソースの管理に関連する多くの無関係な情報とリンクが含まれています。代わりに、ワークスペースを管理するためのAzure ML固有のWebインターフェイスを利用できます。
 
-> **Note**: The web-based interface for Azure ML is named *Azure Machine Learning studio*, which you may find confusing as there is also a free *Azure Machine Learning Studio* product for creating machine learning models using a visual designer. A more scalable version of this visual designer is included in the new studio interface.
+> **Note**: Azure MLのWebベースのインターフェイスの名前は **Azure Machine Learning studio**です。ビジュアルデザイナーを使用して機械学習モデルを作成するための無料の**Azure Machine Learning Studio**製品もあるため、混乱するかもしれません。このビジュアルデザイナーのよりスケーラブルなバージョンは、新しいスタジオインターフェイスに含まれています。
 
-1. In the Azure portal blade for your Azure Machine Learning workspace, click the link to launch **Azure Machine Learning studio**; or alternatively, in a new browser tab, open [https://ml.azure.com](https://ml.azure.com). If prompted, sign in using the Microsoft account you used in the previous task and select your Azure subscription and workspace.
-2. View the Azure Machine Learning studio interface for your workspace - you can manage all of the assets in your workspace from here.
+1. Azure Machine LearningワークスペースのAzureポータルブレードで、リンクをクリックして** Azure Machine Learning studio **を起動します。または、新しいブラウザタブで[https://ml.azure.com]（https://ml.azure.com）を開きます。プロンプトが表示されたら、前のタスクで使用したMicrosoftアカウントを使用してサインインし、Azureサブスクリプションとワークスペースを選択します。
 
-## Task 3: Create Compute Resources
+1. ワークスペースのAzure Machine Learning Studioインターフェイスを表示します。ここからワークスペース内のすべてのアセットを管理できます。
 
-One of the benefits of Azure Machine Learning is the ability to create cloud-based compute on which you can run experiments and training scripts at scale.
+## Task 3: コンピューティングリソースの作成
 
-1. In the Azure Machine Learning studio web interface for your workspace, view the **Compute** page. This is where you'll manage all the compute targets for your data science activities.
-2. On the **Compute Instances** tab, add a new compute instance, giving it a unique name and using the **STANDARD_DS3_V2** VM type template. You'll use this VM as a development environment in subsequent labs.
-3. While the notebook VM is being created, switch to the **Training Clusters** tab, and add a new training cluster with the following settings:
-    * **Compute name**: aml-cluster
-    * **Virtual Machine size**: Standard_DS12_v2
-    * **Virtual Machine priority**: Dedicated
-    * **Minimum number of nodes**: 0
-    * **Maximum number of nodes**: 4
-    * **Idle seconds before scale down**: 120
-4. Note the **Inference Clusters** tab. This is where you can create and manage compute targets on which to deploy your trained models as web services for client applications to consume.
-5. Note the **Attached Compute** tab. This is where you could attach a virtual machine or Databricks cluster that exists outside of your workspace.
+Azure Machine Learningの利点の1つは、実験やトレーニングスクリプトを大規模に実行できるクラウドベースのコンピューティングを作成できることです。
 
-    > **Note**: You'll explore compute targets in more detail later in the course.
 
-## Task 4: Create Data Resources
+1.ワークスペースのAzure Machine Learning Studio Webインターフェイスで、**Compute**ページを表示します。ここで、データサイエンスアクティビティのすべての計算ターゲットを管理します。
+1. [**Compute Instances**]タブで、新しいコンピューティングインスタンスを追加し、一意の名前を付けて、**STANDARD_DS3_V2** VMタイプテンプレートを使用します。このVMは、後続のラボで開発環境として使用します。
 
-Now that you have some compute resources that you can use to process data, you'll need a way to store and ingest the data to be processed.
+1.ノートブックVMの作成中に、**トレーニングクラスター**タブに切り替え、次の設定で新しいトレーニングクラスターを追加します。
+* **計算名**：aml-cluster
+* **仮想マシンのサイズ**：Standard_DS12_v2
+* **仮想マシンの優先度**：専用
+* **最小ノード数**：0
+* **ノードの最大数**：4
+* **スケールダウンのアイドル秒数**：1204.
 
-1. In the *Studio* interface, view the **Datastores** page. Your Azure ML workspace already includes two datastores based on the Azure Storage account that was created along with the workspace. These are used to store notebooks, configuration files, and data.
+**推論クラスター**タブに注意してください。ここで、クライアントアプリケーションが使用するWebサービスとしてトレーニング済みモデルを展開する計算ターゲットを作成および管理できます。
 
-   > **Note**: In a real-world environment, you'd likely add custom datastores that reference your business data stores - for example, Azure blob containers, Azure Data Lakes, Azure SQL Databases, and so on. You'll explore this later in the course.
+1. **Attached Compute**タブに注意してください。これは、ワークスペースの外部に存在する仮想マシンまたはDatabricksクラスターを接続できる場所です。
 
-2. In the *Studio* interface, view the **Datasets** page. Datasets represent specific data files or tables that you plan to work with in Azure ML.
-3. Create a new dataset from web files, using the following settings:
-    * **Web URL**: https://aka.ms/diabetes-data
-    * **Name**: diabetes dataset (*be careful to match the case and spacing*)
-    * **Dataset type**: Tabular
-    * **Description**: Diabetes data
-    * **Settings and preview**: Review the automatically detected settings.
-    * **Schema**: Review the default column selections and data types.
-4. After the dataset has been created, open it and view the **Explore** page to see a sample of the data. This data represents details from patients who have been tested for diabetes, and you will use it in many of the subsequent labs in this course.
 
-    > **Note**: You can optionally generate a *profile* of the dataset to see more details. You'll explore datasets in more detail later in the course.
+    > **Note**: コースの後半で、コンピューティングターゲットについて詳しく説明します。
+
+## Task 4:データリソースを作成する
+
+データの処理に使用できるコンピューティングリソースが用意できたので、処理するデータを保存および取り込む方法が必要になります。
+
+1. *Studio*インターフェースで、**Datastores**ページを表示します。 Azure MLワークスペースには、ワークスペースと共に作成されたAzureストレージアカウントに基づく2つのデータストアが既に含まれています。これらは、ノートブック、構成ファイル、およびデータの保存に使用されます。
+
+   > **Note**: 実際の環境では、ビジネスデータストアを参照するカスタムデータストア（たとえば、Azure BLOBコンテナー、Azure Data Lakes、Azure SQL Databaseなど）を追加する可能性があります。これについては、コースの後半で学習します。
+
+2. *Studio*インターフェースで、**データセット**ページを表示します。データセットは、Azure MLで作業する予定の特定のデータファイルまたはテーブルを表します。
+
+3. 次の設定を使用して、Webファイルから新しいデータセットを作成します:
+* ** Web URL **：https://aka.ms/diabetes-data
+    * **名前**：糖尿病データセット（*大文字と小文字の区別に注意してください*）
+    * **データセットタイプ**：表形式
+    * **説明**：糖尿病データ
+    * **設定とプレビュー**：自動検出された設定を確認します。
+    * **スキーマ**：デフォルトの列選択とデータ型を確認します。
+
+4. データセットが作成されたら、それを開き、**Explore**ページを表示してデータのサンプルを表示します。このデータは、糖尿病の検査を受けた患者の詳細を表します。このデータは、このコースの後続の多くのラボで使用します。
+
+    > **Note**: オプションで、データセットの*プロファイル*を生成して、詳細を確認できます。コースの後半で、データセットをさらに詳しく調べます。
