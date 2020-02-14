@@ -1,30 +1,31 @@
-# Lab 2A: Creating a Training Pipeline with the Azure ML Designer
+# Lab 2A: Azure ML Designerを使用してトレーニングパイプラインを作成する
 
-The *Designer* interface provides a drag & drop environment in which you can define a workflow, or *pipeline* of data ingestion, transformation, and model training modules to create a machine learning model. You can then publish this pipeline as a web service that client applications can use for *inferencing* (generating predictions from new data).
+*Designer*インターフェイスは、機械学習モデルを作成するためのワークフロー、またはデータの取り込み、変換、モデルトレーニングモジュールの*パイプライン*を定義できるドラッグアンドドロップ環境を提供します。その後、このパイプラインを、クライアントアプリケーションが*推論*（新しいデータから予測を生成する）に使用できるWebサービスとして公開できます。
 
-> **Note**: Azure Machine Learning Designer is in *preview* at the time of writing. You may experience some unexpected errors.
+> **Note**: この記事の執筆時点では、Azure Machine Learning Designerは*プレビュー*状態です。予期しないエラーが発生する場合があります。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[ラボ1A](Lab01A.md)および[ラボ1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Create a Designer Pipeline and Explore Data
+## Task 1: デザイナーパイプラインを作成してデータを探索する
 
-To get started with Designer, first you must create a pipeline and add the dataset you want to work with.
+Designerを開始するには、最初にパイプラインを作成し、使用するデータセットを追加する必要があります。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com) for your workspace, view the **Designer** page and create a new pipeline.
-2. In the **Settings** pane, change the default pipeline name (**Pipeline-Created-on-*date***) to **Visual Diabetes Training** (if the **Settings** pane is not visible, click the **&#9881;** icon next to the pipeline name at the top).
-3. Note that you need to specify a compute target on which to run the pipeline. In the **Settings** pane, click **Select compute target** and select the **aml-cluster** compute target you created in the previous lab.
-4. On the left side of the designer, expand the **Datasets** section, and drag the **diabetes dataset** dataset you created in the previous exercise onto the canvas.
-5. Select the **diabetes dataset** module on the canvas, and view its settings. Then on the **outputs** tab, click the **Visualize** icon (which looks liks a column chart).
-6. Review the schema of the data, noting that you can see the distributions of the various columns as histograms. Then close the visualization.
+1. ワークスペースの[Azure Machine Learning studio](https://ml.azure.com)で、**Designer**ページを表示し、新しいパイプラインを作成します。
+2. [**設定**]ペインで、デフォルトのパイプライン名（**Pipeline-Created-on-date**）を**Visual Diabetes Training**（**設定**ペインが表示されていない場合、上部のパイプライン名の横にある**⚙**アイコンをクリックします）。
+3. パイプラインを実行する計算ターゲットを指定する必要があることに注意してください。 [**設定**]ペインで[**コンピューティングターゲットの選択**]をクリックし、前のラボで作成した**aml-cluster*コンピューティングターゲットを選択します。
+4. デザイナーの左側で、**データセット**セクションを展開し、前の演習で作成した**diabetes dataset**データセットをキャンバスにドラッグします。
+5. キャンバスで**diabetes dataset**モジュールを選択し、その設定を表示します。 [**output**]タブで、[**visualize**]アイコン（縦棒グラフに似ています）をクリックします。
+6. データのスキーマを確認し、さまざまな列の分布をヒストグラムとして表示できることに注意してください。次に、視覚エフェクトを閉じます。
 
-## Task 2: Add Transformations
+## Task 2: 変換を追加
 
-Before you can train a model, you typically need to apply some preprocessing transformations to the data.
+モデルをトレーニングする前に、通常、いくつかの前処理変換をデータに適用する必要があります。
 
-1. In the pane on the left, expand the **Data Transformation** section, which contains a wide range of modules you can use to transform data and pre-process it before model training. Drag a **Normalize Data** module to the canvas, below the **diabetes dataset** module. Then connect the output from the **diabetes dataset** module to the input of the **Normalize Data** module.
-2. Select the **Normalize Data** module and view its settings, noting that it requires you to specify the transformation method and the columns to be transformed. Then, leaving the transformation as **ZScore**, edit the columns to includes the following column names:
+1. 左側のペインで、**Data Transformation**セクションを展開します。このセクションには、モデルのトレーニングの前にデータを変換して前処理するために使用できる幅広いモジュールが含まれています。 **Normalize Data**モジュールをキャンバスの**diabetes dataset**モジュールの下にドラッグします。次に、**diabetes dataset**モジュールの出力を**Normalize Data**モジュールの入力に接続します。
+2. **Normalize Data**モジュールを選択し、その設定を表示します。変換方法と変換する列を指定する必要があることに注意してください。次に、変換を**ZScore**のままにして、以下を含むように列を編集します
+column names:
     * PlasmaGlucose
     * DiastolicBloodPressure
     * TricepsThickness
@@ -32,38 +33,46 @@ Before you can train a model, you typically need to apply some preprocessing tra
     * BMI
     * DiabetesPedigree
 
-    **Note**: We're normalizing the numeric columns put them on the same scale, and avoid columns with large values doiminating model training. You'd normally apply a whole bunch of pre-processing transformations like this to prepare your data for training, but we'll keep things simple in this exercise.
+    > **Note**: 数値列を正規化して同じスケールにし、値が大きい列がモデルトレーニングを支配しないようにします。通常、このような前処理変換の全体を適用してトレーニング用のデータを準備しますが、この演習では簡単に説明します。
 
-3. Now we're ready to split the data into separate datasets for training and validation. In the pane on the left, in the **Data Transformations** section, drag a **Split Data** module onto the canvas under the **Normalize Data** module. Then connect the *Transformed Dataset* (left) output of the **Normalize Data** module to the input of the **Split Data** module.
-4. Select the **Split Data** module, and configure its settings as follows:
+3. これで、トレーニングと検証のためにデータを個別のデータセットに分割する準備ができました。左側のペインの**Data Transformations**セクションで、**Split Data**モジュールを**Normalize Data**モジュールの下のキャンバスにドラッグします。次に、**Normalize Data**モジュールの* Transformed Dataset*（左）出力を**Split Data**モジュールの入力に接続します。
+
+4. **Split Data**モジュールを選択し、次のように設定します:
     * **Splitting mode** Split Rows
     * **Fraction of rows in the first output dataset**: 0.7
     * **Random seed**: 123
     * **Stratified split**: False
 
-## Task 3: Add Model Training Modules
+## Task 3: モデルトレーニングモジュールを追加する
 
-With the data prepared and split into training and validation datasets, you're ready to configure the pipeline to train and evaluate a model.
+データを準備し、トレーニングデータセットと検証データセットに分割したら、パイプラインを構成してモデルをトレーニングおよび評価できます。
 
 1. Expand the **Model Training** section in the pane on the left, and drag a **Train Model** module to the canvas, under the **Split Data** module. Then connect the *Result dataset1* (left) output of the **Split Data** module to the *Dataset* (right) input of the **Train Model** module.
-2. The model we're training will predict the **Diabetic** value, so select the **Train Model** module and modify its settings to set the **Label column** to  **Diabetic** (matching the case and spelling exactly!)
-3. The **Diabetic** label the model will predict is a binary column (1 for patients who have diabetes, 0 for patients who don't), so we need to train the model using a *classification* algorithm. Expand the **Machine Learning Algorithms** section, and under **Classification**, drag a **Two-Class Logistic Regression** module to the canvas, to the left of the **Split Data** module and above the **Train Model** module. Then connect its output to the **Untrained model** (left) input of the **Train Model** module.
-4. To test the trained model, we need to use it to score the validation dataset we held back when we split the original data. Expand the **Model Scoring & Evaluation** section and drag a **Score Model** module to the canvas, below the **Train Model** module. Then connect the output of the **Train Model** module to the **Trained model** (left) inout of the **Score Model** module; and drag the **Results dataset2** (right) output of the **Split Data** module to the **Dataset** (right) input of the **Score Model** module.
-5. To evaluate how well the model performs, we need to look at some metrics generated by scoring the validation dataset. From the **Model Scoring & Evaluation** section, drag an **Evaluate Model** module to the canvas, under the **Score Model** module, and connect the output of the **Score Model** module to the **Score dataset** (left) input of the **Evaluate Model** module.
+1. 左側のペインの**Model Training**セクションを展開し、**Train Model**モジュールをキャンバスの**スプリットデータ**モジュールの下にドラッグします。次に、** Split Data **モジュールの* Result dataset1 *（左）出力を** Train Model **モジュールの* Dataset *（右）入力に接続します。
 
-## Task 4:  Run the Training Pipeline
+2. トレーニング中のモデルは**Diabetic**値を予測するため、**Train Model**モジュールを選択し、設定を変更して**Label列**を**Diabetic**に設定します（大文字と小文字の区別！）
 
-With the data flow steps defined, you're now ready to run the training pipeline and train the model.
+3. モデルが予測する**Diabetic**ラベルはバイナリ列（糖尿病患者の場合は1、糖尿病のない患者の場合は0）であるため、*classification*アルゴリズムを使用してモデルをトレーニングする必要があります。 **Machine Learning Algorithms**セクションを展開し、**Classification**の下で、**Two-Class Logistic Regression**モジュールをキャンバスの**Split Data**モジュールの左上にドラッグします。 **Train Model**モジュール。次に、その出力を**Train Model**モジュールの**Untrained model**（左）入力に接続します。
 
-1. Verify that your pipeline looks similar to the following (note that the image includes comments in each module to document what they're doing - it's not a bad idea to do this when you're using the Designer for a real project!):
+4. トレーニング済みのモデルをテストするには、元のデータを分割するときに保持した検証データセットをスコアリングするために使用する必要があります。 **Model Scoring＆Evaluation**セクションを展開し、**Score Model**モジュールをキャンバスの**Train Model**モジュールの下にドラッグします。次に、**Train Model**モジュールの出力を**Score Model**モジュールの**Trained Model**（左）に接続します。 **Results dataset2**（右）**Split Data**モジュールの出力を、**Score Model**モジュールの**Dataset**（右）入力にドラッグします。
+
+5. モデルのパフォーマンスを評価するには、検証データセットのスコアリングによって生成されたいくつかのメトリックを調べる必要があります。 **Model Scoring＆Evaluation**セクションから、**Evaluate Model**モジュールを**Score Model**モジュールの下のキャンバスにドラッグし、**Score Model**モジュールの出力を**Score dataset**（左）**Evaluate Model**モジュールの入力.
+
+## Task 4:  トレーニングパイプラインを実行する
+
+データフローのステップを定義したら、トレーニングパイプラインを実行してモデルをトレーニングする準備ができました。
+
+1. パイプラインが次のようになっていることを確認します（画像の各モジュールに、実行内容を記録するコメントが含まれていることに注意してください。実際のプロジェクトでDesignerを使用している場合、これを行うのは悪くありません！）:
 
     ![Visual Training Pipeline](images/visual-training.jpg)
 
-2. At the top right, click **Run**. Then when prompted, create a new *experiment* named **visual-training**, and run it.  This will initialize the compute target and then run the pipeline, which may take 10 minutes or longer. You  can see the status of the pipeline run above the top right of the design canvas.
+2. 右上の[**実行(Run)**]をクリックします。次に、プロンプトが表示されたら、**visual-training**という名前の新しい*experiment*を作成して実行します。これにより、計算ターゲットが初期化され、パイプラインが実行されます。これには10分以上かかる場合があります。デザインキャンバスの右上にパイプライン実行のステータスが表示されます.
 
-    **Tip**: While it's running, you can view the pipeline and experiment that have been created in the **Pipelines** and **Experiments** pages. Switch back to the **Visual Diabetes Training** pipeline on the **Designer** page when you're done.
+    > **Tip**: 実行中に、**Pipelines**および**Experiments**ページで作成されたパイプラインと実験を表示できます。完了したら、**Designer**ページの**Visual Diabetes Training**パイプラインに戻ります。
 
-3. After the **Normalize Data** module has finished (indicated by a &#x2705; icon), select it, and in the **Settings** pane, on the **Outputs** tab, in the **Transformed dataset** section, click the **Visualize** icon, and note that you can view statistics and distribution visualizations for the transformed columns.
-4. Close the **Normalize Data** visualizations and wait for the rest of the modules to complete. Then visualize the **Evaluate Model** module to see the performance metrics for the model.
+3. **Normalize Data**モジュールが終了したら（&#x2705;アイコンで示されます）、それを選択し、**Settings**ペインの**Outputs**タブの**Transformed dataset**セクションで、**VIsualize**アイコンをクリックし、変換された列の統計と分布の視覚化を表示できることに注意してください。
 
-    **Note**: The performance of this model isn't all that great, partly because we performed only minimal feature engineering and pre-processing. You could try some different classification algorithms and compare the results (you can connect the outputs of the **Split Data** module to multiple **Train Model** and **Score Model** modules, and you can connect a second scored model to the **Evaluate Model** module to see a side-by-side comparison). The point of the exercise is simply to introduce you to the Designer interface, not to train a perfect model!
+
+4. **Normalize Data**ビジュアライゼーションを閉じて、残りのモジュールが完了するのを待ちます。次に、**Evaluate Model**モジュールを視覚化して、モデルのパフォーマンスメトリックを確認します。
+
+    > **Note**: このモデルのパフォーマンスはそれほど優れているわけではありません。一部には、最小限の機能エンジニアリングと前処理のみを実行したためです。いくつかの異なる分類アルゴリズムを試して結果を比較することができます（**Split Data**モジュールの出力を複数の**Train Model**および**Score Model**モジュールに接続できます。モデルを**Evaluate Model**モジュールに追加して、並べて比較します）。演習のポイントは、完璧なモデルをトレーニングするのではなく、単にDesignerインターフェースを紹介することです！

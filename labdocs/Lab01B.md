@@ -1,89 +1,92 @@
-# Lab 1B: Working with Azure Machine Learning Tools
+# Lab 1B: Azure Machine Learning Toolsの使用
 
-In this lab, you will explore various tools for working with an Azure Machine Learning workspace.
+このラボでは、Azure Machine Learningワークスペースを操作するためのさまざまなツールを探索します。
 
-## Before You Start
+## 始める前に
 
-Before starting this lab, you must have created an Azure Machine Learning workspace by following the instructions in the [previous lab](Lab01A.md).
+このラボを開始する前に、[前のラボ]（Lab01A.md）の指示に従ってAzure Machine Learningワークスペースを作成しておく必要があります。
 
-## Task 1: Use the Azure ML SDK in a Compute Instance
+## Task 1: コンピューティングインスタンスでAzure ML SDKを使用する
 
-You can perform most asset management tasks to set up your environment in the *Studio* interface, but it's also important to be able to script configuration tasks to make them easier to repeat and automate.
+ほとんどの資産管理タスクを実行して、* Studio *インターフェースで環境をセットアップできますが、構成タスクをスクリプト化して繰り返しや自動化を容易にすることも重要です。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), on the **Compute** page for your workspace, view the **Compute Instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in the previous lab has started. Then click its **Jupyter** link to open Jupyter Notebooks on the VM.
-2. In the notebook environment, create a new **Terminal**. This will open a new tab with a command shell.
-3. The Azure Machine Learning SDK is already installed in the compute instance image, but it's worth ensuring you have the latest version, with the optional packages you'll need in this course; so enter the following command to update the SDK packages:
+1. [Azure Machine Learning studio](https://ml.azure.com)のワークスペースの[**Compute**]ページで、[**Compute Instances**]タブを表示し、必要に応じて[**Refresh**]をクリックします前のラボで作成したコンピューティングインスタンスが起動するまで定期的に。次に、**Jupyter**リンクをクリックして、VMでJupyterノートブックを開きます。
+
+2. ノートブック環境で、新しい**ターミナル**を作成します。これにより、コマンドシェルで新しいタブが開きます。
+
+3. Azure Machine Learning SDKは既にコンピューティングインスタンスイメージにインストールされていますが、このコースで必要なオプションパッケージとともに最新バージョンを使用することをお勧めします。次のコマンドを入力して、SDKパッケージを更新します:
 
     ```bash
     pip install --upgrade azureml-sdk[notebooks,automl,explain]
     ```
 
-    > **More Information**: For more details about installing the Azure ML SDK and its optional components, see the [Azure ML SDK Documentation](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    > **詳しくは**: Azure ML SDKとそのオプションコンポーネントのインストールの詳細については、[Azure ML SDKドキュメント](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を参照してください。 
 
-4. Next, run the following commands to change the current directory to the **Users** directory, and retrieve the notebooks you will use in the labs for this course:
+4. 次に、次のコマンドを実行して現在のディレクトリを**Users**ディレクトリに変更し、このコースのラボで使用するノートブックを取得します:
 
     ```bash
     cd Users
     git clone https://github.com/MicrosoftLearning/DP100
     ```
 
-5. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the **Users** folder - it should contain an **DP100** folder, containing the files you will use in the rest of this lab.
-6. In the **Users/DP100** folder, open the **01B - Intro to the Azure ML SDK.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+5. コマンドが完了したら、ターミナルタブを閉じて、Jupyterノートブックファイルエクスプローラーでホームページを表示します。次に、**Users**フォルダーを開きます。このフォルダーには**DP100**フォルダーが含まれている必要があり、このラボの残りの部分で使用するファイルが含まれています。
+6. **Users/DP100**フォルダーで、**01B-Azure ML SDK.ipynb**ノートブックの紹介を開きます。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-## Task 2: Set Up a Visual Studio Online Environment
+## Task 2: Visual Studioオンライン環境をセットアップする
 
-Compute instances in Azure Machine Learning provide an easy to manage Python environment for working with Azure ML without the need to manage your own Python installation. However, sometimes you may want to use your own graphical Python development environment. In this course, we'll use Visual Studio Online to simplify installation, but the principles of using the Azure Machine Learning SDK are the same in any Python environment.
+Azure Machine Learningのコンピューティングインスタンスは、独自のPythonインストールを管理する必要なく、Azure MLで作業するための管理しやすいPython環境を提供します。ただし、独自のグラフィカルPython開発環境を使用する場合があります。このコースでは、インストールを簡素化するためにVisual Studio Onlineを使用しますが、Azure Machine Learning SDKを使用する原則は、どのPython環境でも同じです。
 
-> **Note**: Visual Studio Online is in *preview* at the time of writing. You may experience some unexpected error messages.
+> **Note**: 執筆時点では、Visual Studio Onlineは*プレビュー*状態です。予期しないエラーメッセージが表示される場合があります。
 
-1. In a new browser tab, navigate to [https://online.visualstudio.com](https://online.visualstudio.com), and click **Get Started**.
-2. Sign into Visual Studio Online using the same Microsoft credentials you used to sign into Azure.
-3. Create a new environment with the following settings, creating a billing plan in your Azure subscription first if prompted:
-    - **Environment Name**: *A unique name of your choice*
-    - **Git Repository**: MicrosoftLearning/DP100
+1. 新しいブラウザタブで、[https://online.visualstudio.com](https://online.visualstudio.com)に移動し、**Get Started**をクリックします。
+2. Azureへのサインインに使用したのと同じMicrosoft資格情報を使用してVisual Studio Onlineにサインインします。
+3. 次の設定で新しい環境を作成し、プロンプトが表示されたら最初にAzureサブスクリプションで請求プランを作成します:
+    - **Environment Name**: *お好みの一意の名前*
+    - **Git Repository**: tottokug/DP100
     - **Instance Type**: Standard (Linux)
     - **suspend idle environment after**: 30 Minutes
-4. Wait for your environment to be created, and then click its name to connect to it.
+4. 環境が作成されるのを待ってから、その名前をクリックして接続します。
 
-    Visual Studio Online is a hosted instance of Visual Studio Code that you can use in a web browser. Visual Studio Code is a general code editing environment, with support for various programming languages through the installation of *extensions*. To work with Python, you'll need the Microsoft Python extension, which was installed for you along with some commonly used Python packages when you created this environment from the **DP100** repo.
+    Visual Studio Onlineは、Webブラウザーで使用できるVisual Studio Codeのホストされたインスタンスです。 Visual Studio Codeは一般的なコード編集環境であり、*拡張機能*のインストールによりさまざまなプログラミング言語をサポートしています。 Pythonを使用するには、**DP100**リポジトリからこの環境を作成したときに一般的に使用されるいくつかのPythonパッケージとともにインストールされたMicrosoft Python拡張が必要です。
 
-    The hosted Visual Studio Code environment includes three installations of Python (versions 2.7.13, 3.5.3, and 3.8.0). You will use the Python **3.5.3** virtual environment. In your own installation, you are responsible for installing Python, creating virtual environments, and installing the packages you need. In this lab, most of the general Python configuration has been done for you, but you need to install the Azure Machine Learning SDK.
+    ホストされているVisual Studio Code環境には、Pythonの3つのインストール（バージョン2.7.13、3.5.3、および3.8.0）が含まれています。 Python **3.5.3**仮想環境を使用します。独自のインストールでは、Pythonのインストール、仮想環境の作成、必要なパッケージのインストールを担当します。この実習ラボでは、一般的なPython構成のほとんどが完了していますが、Azure Machine Learning SDKをインストールする必要があります。
 
-5. In the Visual Studio Online environment, wait for the contents of the DP100 repo to be loaded, and then in the Application Menu (**&#9776;**), on the **View** menu, click **Command Palette** (or press CTRL+SHIFT+P). Then in the Palette, enter the command **Python: Create Terminal**. This opens a Python terminal pane at the bottom of the Visual Studio Online interface. If prompted, select the **Python 3.5.3** interpreter.
-6. In the terminal pane, enter the following command to change to the directory where the Python 3.5.3 virtual environment is defined:
+5. Visual Studio Online環境では、DP100リポジトリのコンテンツがロードされるのを待ってから、アプリケーションメニュー（**☰**）の**表示**メニューで、**コマンドパレット**（または、Ctrl + Shift + Pキーを押します。次に、パレットでコマンド** Python：Create Terminal **を入力します。これにより、Visual Studio Onlineインターフェイスの下部にPythonターミナルペインが開きます。プロンプトが表示されたら、** Python 3.5.3 **インタープリターを選択します。
+
+6. ターミナルペインで、次のコマンドを入力して、Python 3.5.3仮想環境が定義されているディレクトリに移動します。:
 
     ````bash
     cd /usr/bin
     ````
 
-7. Now install the Azure Machine Learning SDK (with the optional *notebooks* extra package) using this command:
+7. このコマンドを使用して、Azure Machine Learning SDKをインストールします（オプションの*notebooks*追加パッケージを使用）:
 
     ```bash
     sudo pip install azureml-sdk[notebooks]
     ```
 
-8. Close the Terminal pane.
+8. ターミナルペインを閉じます。
 
-## Task 3: Use the Azure ML SDK in Visual Studio Online
+## Task 3: Visual Studio OnlineでAzure ML SDKを使用する
 
-Now that you have a Python development environment, you can use the Azure Machine Learning SDK in it. First, you need to get the configuration information required to connect to your Azure Machine Learning workspace.
+Python開発環境ができたので、その中でAzure Machine Learning SDKを使用できます。最初に、Azure Machine Learningワークスペースに接続するために必要な構成情報を取得する必要があります。
 
-1. In a new browser tab, open the Azure portal at [https://portal.azure.com](https://portal.azure.com), signing in if necessary.
-2. Open the Azure Machine Learning workspace resource you created in the previous lab, and on its **Overview** page, click **Download config.json** and download the file to your local computer.
-3. Open the downloaded **config.json** file in a text editor, and copy it's contents to the clipboard. This file contains the configuration information necessary to connect to your workspace.
-4. In Visual Studio Online, create a new file named **config.json** in the root folder of your VS Online workspace.
-5. Paste the copied configuration information into the new config.json file in your Visual Studio Online workspace, and save it.
-6. In Visual Studio Online, open the **01B - Intro to the Azure ML SDK.ipynb** notebook - this will be loaded in the Jupyter Notebook interface within Visual Studio Online. It may take a while to load the first time the Jupyter Notebooks interface is used, and you may briefly see two panes - one containing the JSON representation of the notebook, and the other containing the notebook visual interface.
-7. When the notebook has loaded, at the bottom left of the Visual Studio Online interface, click the current Python virtual environment. This should have changed to **Python 3.5.3** based on the configuration settings in the repo, but select that virtual environment again anyway (the notebook was authored in a different version, which is indicated in its metadata).
-8. Read the notes in the notebook, running each code cell in turn, just as you did in the Azure Machine Learning Notebook VM Jupyter environment.
+1. 新しいブラウザータブで、[https://portal.azure.com](https://portal.azure.com)でAzureポータルを開き、必要に応じてサインインします。
+2. 前のラボで作成したAzure Machine Learningワークスペースリソースを開き、**概要**ページで**Download config.json**をクリックして、ファイルをローカルコンピューターにダウンロードします。
+3. ダウンロードした** config.json **ファイルをテキストエディターで開き、その内容をクリップボードにコピーします。このファイルには、ワークスペースに接続するために必要な構成情報が含まれています。
+4. Visual Studio Onlineで、VS Onlineワークスペースのルートフォルダーに**config.json**という名前の新しいファイルを作成します。
+5. コピーした構成情報をVisual Studio Onlineワークスペースの新しいconfig.jsonファイルに貼り付けて保存します。
+6. Visual Studio Onlineで、** 01B-Azure ML SDK.ipynb **ノートブックの概要を開きます。これは、Visual Studio Online内のJupyter Notebookインターフェイスに読み込まれます。 Jupyter Notebooksインターフェースを初めて使用する場合、ロードに時間がかかる場合があります。2つのペインが簡単に表示される場合があります。
+7. ノートブックがロードされたら、Visual Studio Onlineインターフェースの左下で、現在のPython仮想環境をクリックします。これは、リポジトリの構成設定に基づいて**Python 3.5.3**に変更されているはずですが、とにかくその仮想環境を再度選択します（ノートブックは、メタデータに示されている別のバージョンで作成されています）。
+8. Azure Machine Learning Notebook VM Jupyter環境で行ったように、ノートブックのノートを読み、各コードセルを順番に実行します。
 
-## Task 4: Use the Visual Studio Code Azure Machine Learning Extension
+## Task 4: Visual Studio Code Azure Machine Learning Extensionを使用する
 
-If you plan to work with Azure Machine Learning in Visual Studio Online (or a local installation of Visual Studio Code), the Azure Machine Learning extension can help make it easier to work with resources in your workspace without needing to switch between your code development environment and the Azure Machine Learning studio web interface.
+Visual Studio Online（またはVisual Studio Codeのローカルインストール）でAzure Machine Learningを使用する予定の場合、Azure Machine Learning拡張機能を使用すると、コード開発環境を切り替えることなくワークスペースのリソースを簡単に操作できますAzure Machine Learning Studio Webインターフェイス。
 
-1. In Visual Studio Online, click the **Extensions** tab (&#8862;), and search for "Azure Machine Learning". Then install the **Azure Machine Learning** extension from Microsoft. After the extension has installed, click the **Reload Required** button to reload the environment with the extension.
-2. In Visual Studio Online, click the **Azure** tab (***&Delta;***) and in the **Azure Machine Learning** section, expand your subscription and your Azure Machine Learning workspace.
-3. Expand **Compute** and verify that the **aml-cluster** compute resource you created in your workspace is listed along with a **local** compute resource, which in this case represents the Visual Studio Online hosted environment - you can run Azure Machine Learning code experiments on local compute as well as on compute resources defined in the workspace.
-4. Close the Visual Studio Online browser tab.
+1. Visual Studio Onlineで[**拡張機能**]タブ（⊞）をクリックし、「Azure Machine Learning」を検索します。次に、Microsoftの**Azure Machine Learning**拡張機能をインストールします。拡張機能がインストールされたら、**Reload Required**ボタンをクリックして、拡張機能を使用して環境をリロードします。
+2. Visual Studio Onlineで**Azure**タブ（**&Delta;**）をクリックし、**Azure Machine Learning**セクションでサブスクリプションとAzure Machine Learningワークスペースを展開します。
+3. ** Compute **を展開し、ワークスペースで作成した** aml-cluster **コンピューティングリソースが、** local **コンピューティングリソースと共にリストされていることを確認します。この場合、Visual Studio Onlineホスト環境を表します。ローカルコンピューティングおよびワークスペースで定義されたコンピューティングリソースでAzure Machine Learningコード実験を実行できます。
+4. Visual Studio Onlineブラウザータブを閉じます。
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab02A.md), leave your compute instance running. If you're taking a break, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+> **Note**: [次の演習]（Lab02A.md）に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩する場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。

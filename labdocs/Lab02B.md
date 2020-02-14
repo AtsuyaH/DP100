@@ -1,26 +1,26 @@
-# Lab 2B: Deploying a Service with the Azure ML Designer
+# Lab 2B: Azure ML Designerを使用してサービスをデプロイする
 
-Now that you have a trained model, you can take the training pipeline and use it to create an inference pipeline for scoring new data.
+トレーニング済みのモデルができたので、トレーニングパイプラインを使用して、新しいデータをスコアリングするための推論パイプラインを作成するために使用できます。
 
-> **Note**: Azure Machine Learning Designer is in *preview* at the time of writing. You may experience some unexpected errors.
+> **Note**: この記事の執筆時点では、Azure Machine Learning Designerは*プレビュー*状態です。予期しないエラーが発生する場合があります。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab. You must also complete [Lab 2A](Lab02A.md), which includes tasks to create the Designer training pipeline used in this lab.
+このラボを開始する前に、[Lab1A](Lab01A.md)および[Lab1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。 [Lab2A](Lab02A.md)も完了する必要があります。これには、このラボで使用するDesignerトレーニングパイプラインを作成するタスクが含まれています。
 
-## Task 1: Prepare Compute
+## Task 1: Computeの準備
 
-In this lab, you will publish an inference pipeline as a containerized service in an Azure Kubernetes Service (AKS) cluster. An AKS cluster can take some time to initialize, so you'll start the process before preparing your inference pipeline.
+このラボでは、推論パイプラインをAzure Kubernetes Service（AKS）クラスターのコンテナー化されたサービスとして公開します。 AKSクラスターは初期化に時間がかかることがあるため、推論パイプラインを準備する前にプロセスを開始します。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), on the **Compute** page for your workspace, review the existing compute targets under each tab. These should include:
-    * **Compute Instances**: The compute instance you created in a previous lab.
-    * **Training Clusters**: The **aml-cluster** compute target you created in a previous lab].
-    * **Inference Clusters**: None (yet!)
-    * **Attached Compute**: None (this is where you could attach a virtual machine or Databricks cluster that exists outside of your workspace)
+1. [Azure Machine Learning studio](https://ml.azure.com)のワークスペースの[**Compute**]ページで、各タブの下にある既存の計算ターゲットを確認します。これらには以下が含まれます。
+    * **Compute Instances**: 前のラボで作成したコンピューティングインスタンス。
+    * **Training Clusters**: 前のラボで作成した**aml-cluster**計算ターゲット]。
+    * **Inference Clusters**: なし（まだ！）
+    * **Attached Compute**: なし（これは、ワークスペース外に存在する仮想マシンまたはDatabricksクラスターを接続できる場所です）
 
-2. In the **Compute Instances** tab, if your compute instance is not already running, start it - you will use it later in this lab.
+2. [**Compute Instances**]タブで、計算インスタンスがまだ実行されていない場合は起動します。この実習ラボで後で使用します。
 
-3. On the **Inference Clusters** tab, add a new cluster with the following settings:
+3. [**Inference Clusters**]タブで、次の設定で新しいクラスターを追加します:
     * **Compute name**: aks-cluster
     * **Kubernetes Service**: Create new
     * **Region**: *Any available region*
@@ -30,16 +30,17 @@ In this lab, you will publish an inference pipeline as a containerized service i
     * **Network configuration**: Basic
     * **Enable SSL configuration**: Unselected
 
-4. Verify that the compute target is in the *Creating* state, and proceed to the next task.
+4. 計算ターゲットが*Creating*状態にあることを確認し、次のタスクに進みます。
 
-## Task 2: Create an Inference Pipeline
+## Task 2: 推論パイプラインを作成する
 
-While the inference compute is being provisioned, you can prepare the inference pipeline for deployment.
+推論計算のプロビジョニング中に、展開用の推論パイプラインを準備できます。
 
-1. On the **Designer** page, open the **Visual Diabetes Training** pipeline you created in the previous lab.
-2. In the **Create inference pipeline** drop-down list, click **Real-time inference pipeline**. After a few seconds, a new version of your pipeline named **Visual Diabetes Training-real time inference** will be opened.
-3. Rename the new pipeline to **Predict Diabetes**, and then review the new pipeline. Note that some of the transformations and training steps have been encapsulated in this pipeline so that the statistics from your training data will be used to normalize any new data values, and the trained model will be used to score the new data.
-4. The inference pipeline assumes that new data will match the schema of the original training data, so the **diabetes dataset** module from the training pipeline is included. However, this input data includes the **Diabetic** label that the model predicts, which is unintuitive to include in new patient data for which a diabetes prediction has not yet been made. Delete this module and replace it with an **Enter Data Manually** module from the **Data Input and Output** section, connected to the same **dataset** input of the **Apply Transformation** module as the **Web Service Input**. Then modify the settings of the **Enter Data Manually** module to use the following CSV input, which includes feature values without labels for three new patient observations:
+1. **Designer**ページで、前のラボで作成した**Visual Diabetes Training**パイプラインを開きます。
+2. [**Create inference pipeline**]ドロップダウンリストで、[**Real-time inference pipeline**]をクリックします。数秒後、**Visual Diabetes Training-real time inference**という名前のパイプラインの新しいバージョンが開きます。
+
+3. 新しいパイプラインの名前を**Predict Diabetes**に変更してから、新しいパイプラインを確認します。変換データとトレーニングステップの一部はこのパイプラインにカプセル化されているため、トレーニングデータの統計を使用して新しいデータ値を正規化し、トレーニングされたモデルを使用して新しいデータをスコアリングします。
+4. 推論パイプラインは、新しいデータが元のトレーニングデータのスキーマと一致すると想定しているため、トレーニングパイプラインの**diabetes dataset**モジュールが含まれています。ただし、この入力データには、モデルが予測する**Diabetic**ラベルが含まれています。これは、糖尿病の予測がまだ行われていない新しい患者データに含めるのは直感的ではありません。このモジュールを削除し、**Apply Transformation**モジュールの同じ**dataset**入力に接続されている**Data Input and Output**セクションから**Enter Data Manually**モジュールに置き換えます。 **Web Service Input**。次に、**Enter Data Manually**モジュールの設定を変更して、次のCSV入力を使用します。これには、3つの新しい患者観察のラベルなしの特徴値が含まれます:
 
     ```CSV
     PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age
@@ -48,8 +49,8 @@ While the inference compute is being provisioned, you can prepare the inference 
     1228510,4,115,50,29,243,34.69215364,0.741159926,59
     ```
 
-5. The inference pipeline includes the **Evaluate Model** module, which is not useful when predicting from new data, so delete this module.
-6. The ouput from the **Score Model** module includes all of the input features as well as the predicted label and probability score. To limit the output to only the prediction and probability, delete the connection between the **Score Model** module and the **Web Service Output**, add an **Apply SQL Transformation** module from the **Data Transformations** section, connect the output from the **Score Model** module to the **t1** (left-most) input of the **Apply SQL Transformation**, and connect the output of the **Apply SQL Transformation** module to the **Web Service Output**. Then modify the settings of the **Apply SQL Transformation** module to use the following SQL query script:
+5. 推論パイプラインには**Evaluate Model**モジュールが含まれていますが、これは新しいデータから予測する場合には役に立たないため、このモジュールを削除してください。
+6. **Score Model**モジュールの出力には、入力フィーチャのすべてと、予測ラベルと確率スコアが含まれます。出力を予測と確率のみに制限するには、**Score Model**モジュールと**Web Service Output**間の接続を削除し、**Data Transformations** **Apply SQL Transformation **モジュールを追加します。セクション、**Score Model**モジュールからの出力を**Apply SQL Transformation**の**t1**（左端）入力に接続し、**Apply SQL Transformation** の出力を接続します**Web Service Output**のモジュール。次に、**Apply SQL Transformation**モジュールの設定を変更して、次のSQLクエリスクリプトを使用します。:
 
     ```SQL
     SELECT PatientID,
@@ -58,40 +59,43 @@ While the inference compute is being provisioned, you can prepare the inference 
     FROM t1
     ```
 
-7. Verify that your pipeline looks similar to the following:
+7. パイプラインが次のように見えることを確認します:
 
     ![Visual Inference Pipeline](images/visual-inference.jpg)
 
-8. Run the pipeline as a new experiment named **predict-diabetes** on the **aml-compute** compute target you used for training. This may take a while!
+8. トレーニングに使用した**aml-compute**計算ターゲットで、**predict-diabetes**という名前の新しい実験としてパイプラインを実行します。これは時間がかかる場合があります！
 
-## Task 3: Publish a Web Service
+## Task 3: Webサービスを公開する
 
-Now you have an inference pipeline for real-time inferencing, which you can publish as a web service for client applications to use.
+これで、リアルタイム推論用の推論パイプラインができました。これは、クライアントアプリケーションが使用するWebサービスとして公開できます。
 
-1. Return the the **Compute** page and on the **Inference Compute** tab, refresh the view and verify that your **aks-cluster** compute has been created. If not, wait for your inference cluster to be created. This may take quite a bit of time.
-2. Switch back to the **Designer** tab and reopen your **Predict Diabetes** inference pipeline. If it has not yet finished running, await it's completion. Then visualize the output of the **Apply SQL Transformation** module to see the predicted labels and probabilties for the three patient observations in the input data.
-3. At the top right, click **Deploy**, and set up a new real-time endpoint named **predict-diabetes** on the **aks-cluster** compute target you created.
-4. Wait for the web service to be deployed - this can take several minutes. The deployment status is shown at the top left of the Designer interface.
+1. **Compute**ページに戻り、**Inference Compute**タブでビューを更新し、**aks-cluster**コンピューティングが作成されたことを確認します。そうでない場合は、推論クラスターが作成されるのを待ちます。これにはかなり時間がかかる場合があります。
 
-    > **Tip**: While you're waiting for your service to be deployed, why not spend some time reviewing the Azure Machine Learning Designer documentation at [https://docs.microsoft.com/azure/machine-learning/service/concept-designer](https://docs.microsoft.com/azure/machine-learning/service/concept-designer)?
+2. **Designer**タブに戻り、**Predict Diabetes**推論パイプラインを再度開きます。まだ実行が終了していない場合は、完了するまで待ちます。次に、**Apply SQL Transformation**モジュールの出力を視覚化して、入力データ内の3つの患者の観察の予測ラベルと確率を確認します。
 
-## Task 4: Test the Web Service
+3. 右上の[**Deploy**]をクリックし、作成した**aks-cluster**コンピューティングターゲットに**predict-diabetes**という名前の新しいリアルタイムエンドポイントを設定します。
+4. Webサービスがデプロイされるのを待ちます-これには数分かかる場合があります。展開ステータスは、Designerインターフェイスの左上に表示されます。
 
-Now you can test your deployed service from a client application - in this case, you'll use a notebook in your Notebook VM.
+    > **Tip**: サービスがデプロイされるのを待っている間に、Azure Machine Learning Designerのドキュメントをしばらく見てください。[https://docs.microsoft.com/azure/machine-learning/service/concept-designer](https://docs.microsoft.com/azure/machine-learning/service/concept-designer)
 
-1. On the **Endpoints** page, open the **predict-diabetes** real-time endpoint.
-2. When the **predict-diabetes** endpoint opens, on the **Test** page, note the default test input parameters and then click **Test** to submit them to the deployed web service and generate a prediction.
-3. On the **Consume** tab, view the sample code that is provided for **Python**, and then copy the entire Python sample script to the clipboard.
-4. On the **Compute** page, if your compute instance is not yet running, wait for it to start. Then click its **Jupyter** link.
-5. In Jupyter, in the **Users/DP100** folder, open **02B - Using the Visual Designer.ipynb**.
-6. In the notebook, paste the code you copied into the empty code cell.
-7. Run the code cell and view the output returned by your web service.
+## Task 4: Webサービスをテストする
 
-## Task 5: Delete the Web Service and Compute
+これで、クライアントアプリケーションからデプロイされたサービスをテストできます。この場合、ノートブックVMでノートブックを使用します。
 
-The web service is hosted in a Kubernetes cluster. If you don't intend to experiment with it further, you should delete the endpoint and the cluster to avoid accruing unnecessary Azure charges.
+1. [**Endpoint**]ページで、**predict-diabetes**リアルタイムエンドポイントを開きます。
+2. **predict-diabetes**エンドポイントが開いたら、**Test**ページで、デフォルトのテスト入力パラメーターを書き留めてから**Test**をクリックして、デプロイされたWebサービスに送信し、予測を生成します。
+3. [**Consume**]タブで、**Python**に提供されているサンプルコードを表示し、Pythonサンプルスクリプト全体をクリップボードにコピーします。
+4. [**Compute**]ページで、コンピューティングインスタンスがまだ実行されていない場合は、起動するまで待ちます。次に、**Jupyter**リンクをクリックします。
+5. Jupyterの**Users/DP100**フォルダーで、**02B-Visual Designer.ipynb**を使用して開きます。
+6. ノートブックで、コピーしたコードを空のコードセルに貼り付けます。
+7. コードセルを実行し、Webサービスから返された出力を表示します。
 
-1. In the *Studio* web interface for your Azure ML workspace, on the **Endpoints** tab, select the **predict-diabetes** endpoint. Then click the **Delete** (&#128465;) button and confirm that you want to delete the endpoint.
-2. On the **Compute** page, on the **Inference Clusters** tab, select the select the **aks-cluster** endpoint. Then click the **Delete** (&#128465;) button and confirm that you want to delete the compute target.
+## Task 5: Webサービスを削除して計算する
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab03A.md), leave your compute instance running. If you're taking a break, you might want to close the Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+WebサービスはKubernetesクラスターでホストされます。さらに試してみるつもりがない場合は、エンドポイントとクラスターを削除して、不要なAzure料金が発生しないようにする必要があります。
+
+1. Azure MLワークスペースの*Studio* Webインターフェイスの[**Endpoints**]タブで、**predict-diabetes**エンドポイントを選択します。次に、**削除**（🗑）ボタンをクリックして、エンドポイントを削除することを確認します。
+2. [**Compute**]ページの[**Inference Clusters**]タブで、[**aks-cluster**]エンドポイントを選択します。次に、**削除**（🗑）ボタンをクリックして、計算ターゲットを削除することを確認します。
+
+> **Note**: [次の演習](Lab03A.md)に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩する場合は、Jupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。
+
