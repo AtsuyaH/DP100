@@ -54,7 +54,7 @@
     pip install --upgrade --force-reinstall azureml-sdk[notebooks,automl,explain]
     ```
 
-## Azure Machine Learningを使用するとタイムアウトまたは偽のエラーが発生します
+## Azure Machine Learningを使用するとタイムアウトまたはエラーが発生します
 
 - **問題**：予期しないタイムアウトまたはその他のエラーが発生します。
 - **考えられる原因**：Azure Machine Learningはクラウドサービスであるため、他のネットワークサービスに依存しています。さらに、Azure Machine Learningの多くの機能が現在プレビュー中です。完全な停止はまれですが、断続的なエラーが発生する可能性があります。サービスまたはネットワークに一時的な問題がある可能性があります。
