@@ -1,17 +1,17 @@
-# Lab 10B: Monitoring Data Drift
+# Lab 10B: Data Driftの監視
 
-Changing trends in data over time can reduce the accuracy of the predictions made by a model. Monitoring for this *data drift* and retraining as necessary is an important way to ensure your machine learning solution continues to predict accurately.
+経時的にデータの傾向を変更すると、モデルによって行われる予測の精度が低下する可能性があります。この*data drift*を監視し、必要に応じて再トレーニングすることは、機械学習ソリューションが正確に予測し続けることを保証するための重要な方法です。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[Lab1A](Lab01A.md)および[Lab1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Monitor Data Drift for Datasets
+## Task 1: データセットのData Driftを監視する
 
-In this task, you'll monitor datasets for data drift.
+このタスクでは、データドリフトのデータセットを監視します。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Compute** page for your workspace; and on the **Compute Instances** tab, ensure your compute instance is running. If not, start it.
-2. When the compute instance is running, click the **Jupyter** link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, in the **Users/DP100** folder, open the **10B - Monitoring Data Drift.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Compute**ページを表示します。 [**Compute Instances**]タブで、コンピューティングインスタンスが実行されていることを確認します。そうでない場合は、開始します。
+2. コンピューティングインスタンスの実行中に、**Jupyter**リンクをクリックして、新しいブラウザータブでJupyterホームページを開きます。
+3. Jupyterホームページの**Users/DP100**フォルダーで、**10B-Monitoring Data Drift.ipynb**ノートブックを開きます。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-> **Note**: If you have finished with the labs in this course, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs. If you don't intend to work with your Azure Machine Learning workspace again, delete the resource group in which it is defined in your Azure subscription.
+> **Note**: このコースのラボを終了した場合、不要なコストが発生しないように、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**することをお勧めします。 Azure Machine Learningワークスペースを再び使用する予定がない場合は、Azureサブスクリプションで定義されているリソースグループを削除します。
