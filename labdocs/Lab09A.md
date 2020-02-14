@@ -1,4 +1,4 @@
-# Lab 9A: Automated Machine Learningの説明
+# Lab 9A: Automated Machine Learningで変数の影響度を説明する
 
 自動機械学習を使用してモデルをトレーニングする場合、変数の影響度の説明を生成するように実験を構成できます。
 
