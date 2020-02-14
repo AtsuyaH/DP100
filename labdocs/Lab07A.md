@@ -1,17 +1,17 @@
-# Lab 7A: Creating a Real-time Inferencing Service
+# Lab 7A: リアルタイム推論サービスの作成
 
-There's no point in training and registering models if you don't plan to make them available for applications to use. In this lab, you'll deploy a model as a web service for real-time inferencing.
+使用するアプリケーションでモデルを使用可能にする予定がない場合、モデルのトレーニングと登録には意味がありません。このラボでは、モデルをリアルタイム推論のWebサービスとして展開します。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[ラボ1A](Lab01A.md)および[ラボ1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Create a Real-time Inferencing Service
+## Task 1: リアルタイム推論サービスを作成する
 
-In this task, you'll create a real-time inferencing service as an Azure Container Instance (ACI).
+このタスクでは、リアルタイム推論サービスをAzure Container Instance（ACI）として作成します。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Compute** page for your workspace; and on the **Compute Instances** tab, ensure your compute instance is running. If not, start it.
-2. When the compute instance is running, click the **Jupyter** link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, in the **Users/DP100** folder, open the **07A - Creating a Real-time Inferencing Service.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Compute**ページを表示します。 [**Compute Instances**]タブで、コンピューティングインスタンスが実行されていることを確認します。そうでない場合は、開始します。
+2. コンピューティングインスタンスの実行中に、**Jupyter**リンクをクリックして、新しいブラウザータブでJupyterホームページを開きます。
+3. Jupyterホームページの**Users/DP100**フォルダーで、**07A - Creating a Real-time Inferencing Service.ipynb**ノートブックの作成を開きます。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab07B.md), leave your compute instance running. If you're taking a break, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+> **Note**: [次の演習](Lab07B.md)に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩している場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。

@@ -1,17 +1,17 @@
-# Lab 7B: Creating a Batch Inferencing Service
+# Lab 7B: バッチ推論サービスの作成
 
-In many scenarios, inferencing is performed as a batch process that uses a predictive model to score a large number of cases. To implement this kind of inferencing solution in Azure Machine Learning, you can create a batch inferencing pipeline.
+多くのシナリオでは、推論は、予測モデルを使用して多数のケースをスコアリングするバッチプロセスとして実行されます。この種の推論ソリューションをAzure Machine Learningに実装するには、バッチ推論パイプラインを作成できます。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[Lab1A](Lab01A.md)および[Lab1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Create a Batch Inferencing Service
+## Task 1: バッチ推論サービスを作成する
 
-In this task, you'll create a batch inferencing pipeline, and publish it as a service.
+このタスクでは、バッチ推論パイプラインを作成し、サービスとして公開します。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Compute** page for your workspace; and on the **Compute Instances** tab, ensure your compute instance is running. If not, start it.
-2. When the compute instance is running, click the **Jupyter** link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, in the **Users/DP100** folder, open the **07B - Creating a Batch Inferencing Service.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Compute**ページを表示します。 [**Compute Instances**]タブで、コンピューティングインスタンスが実行されていることを確認します。そうでない場合は、開始します。
+2. コンピューティングインスタンスの実行中に、**Jupyter**リンクをクリックして、新しいブラウザータブでJupyterホームページを開きます。
+3. Jupyterホームページの**Users/DP100**フォルダーで、**07B-バッチ推論Service.ipynb**ノートブックを作成します。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab08A.md), leave your compute instance running. If you're taking a break, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+> **Note**: [次の演習](Lab08A.md)に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩している場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。
