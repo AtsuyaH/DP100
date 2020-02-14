@@ -1,17 +1,17 @@
-# Lab 6A: Creating a Pipeline
+# Lab 6A: パイプラインを作成する
 
-You can use the Azure Machine Learning SDK to perform all of the tasks required to create and operate a machine learning solution in Azure. Rather than perform these tasks individually, you can use *pipelines* to orchestrate the steps required to prepare data, run training scripts, register models, and other tasks.
+Azure Machine Learning SDKを使用して、Azureで機械学習ソリューションを作成および操作するために必要なすべてのタスクを実行できます。これらのタスクを個別に実行するのではなく、*Pipelines*を使用して、データの準備、トレーニングスクリプトの実行、モデルの登録、およびその他のタスクに必要な手順を調整できます。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[Lab1A](Lab01A.md)および[Lab1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Create a Pipeline
+## Task 1: パイプラインを作成する
 
-In this task, you'll create a pipeline to train and register a model.
+このタスクでは、モデルをトレーニングおよび登録するためのパイプラインを作成します。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Compute** page for your workspace; and on the **Compute Instances** tab, ensure your compute instance is running. If not, start it.
-2. When the compute instance is running, click the **Jupyter** link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, in the **Users/DP100** folder, open the **06A - Creating a Pipeline.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Compute**ページを表示します。 [**Compute Instances**]タブで、コンピューティングインスタンスが実行されていることを確認します。そうでない場合は、開始します。
+2. コンピューティングインスタンスの実行中に、**Jupyter**リンクをクリックして、新しいブラウザータブでJupyterホームページを開きます。
+3. Jupyterホームページの**Users/DP100**フォルダーで、**06A-Creating a Pipeline.ipynb** Notebookを開きます。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab06B.md), leave your compute instance running. If you're taking a break, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+> **Note**: [次の演習](Lab06B.md)に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩している場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。
