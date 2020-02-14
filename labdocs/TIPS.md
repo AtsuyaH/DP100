@@ -1,61 +1,61 @@
 # Tips
 
-The labs in this repo have been tested using a variety of operating systems, web browsers, Azure subscription types, and Azure regions. However, we can't test every possible configuration. This document details some of the issues we've seen students experience, and workarounds that have helped.
+このリポジトリのラボは、さまざまなオペレーティングシステム、Webブラウザー、Azureサブスクリプションタイプ、およびAzureリージョンを使用してテストされています。ただし、考えられるすべての構成をテストすることはできません。このドキュメントでは、学生が経験した問題のいくつかと、解決した回避策について詳しく説明します。
 
-## I can't connect to a portal or web interface in the labs
+## ラボのポータルまたはWebインターフェイスに接続できません
 
-- **Problem**: You get an error when trying to connect to a link in the labs or from one portal to another.
-- **Possible Cause**: You may be using a firewall that restricts the sites you can access.
-- **Possible Solution**: Speak to your network administrator or consult your personal firewall documentation to enable access to the required sites. Alternatively, if you are taking this course through an authorized learning partner, you may be provided with a hosted lab environment that consists of a Windows 10 virtual machine with a browser installed - if so, try to access this "jump box" using a web browser, and then use the browser-based virtual machine to perform the labs.
+- **問題**：ラボ内のリンクまたはあるポータルから別のポータルに接続しようとするとエラーが発生します。
+- **考えられる原因**：アクセスできるサイトを制限するファイアウォールを使用している可能性があります。
+- **考えられる解決策**：ネットワーク管理者に相談するか、パーソナルファイアウォールのドキュメントを参照して、必要なサイトにアクセスできるようにします。または、認定されたラーニングパートナーを通じてこのコースを受講している場合は、ブラウザがインストールされたWindows 10仮想マシンで構成されるホストされたラボ環境が提供される場合があります。その場合、Webを使用してこの「ジャンプボックス」にアクセスしてくださいブラウザ、そしてブラウザベースの仮想マシンを使用してラボを実行します。
 
-## I'm unable to create an Azure Machine Learning workspace in Azure
+## AzureでAzure Machine Learningワークスペースを作成できません
 
-- **Problem**: You experience an error when trying to create an Azure Machine Learning resource in your Azure subscription.
-- **Possible Cause**: If you are using a subscription provided by your employer or school, you may not have permission to create a machine learning resource.
-- **Possible Solution**: Ask your subscription administrator to grant you the required permissions, or create your own Azure subscription at [https://azure.microsoft.com](https://azure.microsoft.com). If you are taking this course through an authorized learning partner, you may be provided with an *Azure Pass* that will provide a temporary subscription for the course - if so, use it.
+- **問題**：AzureサブスクリプションでAzure Machine Learningリソースを作成しようとするとエラーが発生します。
+- **考えられる原因**：雇用主または学校が提供するサブスクリプションを使用している場合、機械学習リソースを作成する権限がない可能性があります。
+- **考えられる解決策**：サブスクリプション管理者に必要なアクセス許可を付与するか、[https://azure.microsoft.com](https://azure.microsoft.com)で独自のAzureサブスクリプションを作成するよう依頼してください。認定学習パートナーを通じてこのコースを受講している場合は、コースの一時的なサブスクリプションを提供する* Azureパス*が提供される場合があります。
 
-## Azure signs me in automatically with the wrong account
+## Azureは間違ったアカウントで自動的にサインインします
 
-- **Problem**: When you open the Azure portal in youtr browser, you don't get prompted to sign in - instead you are signed in automatically with a different account from the one you want to use in the labs, or you get an authentication or "access forbidden" error.
-- **Possible Cause**: If you use multiple Microsoft accounts (for example, a work account and a personal outlook.com account) on the same computer, your browser may cache credentials and sign you in automatically without giving you the opportunity to select a different account.
-- **Possible Solution**: Try signing out of all Microsoft accounts in all browser sessions and clear the browser cache, or opening a *private browsing* session in your browser and use that to complete the labs. Alternatively, install a second browser and use that. If you are connecting a compute instance, try restarting the compute instance. If you are taking this course through an authorized learning partner, you may be provided with a hosted lab environment that consists of a Windows 10 virtual machine with a browser installed - if so, use it.
+- **問題**：ブラウザーでAzureポータルを開くと、サインインするように求められません-代わりに、ラボで使用するアカウントとは異なるアカウントで自動的にサインインされます。認証エラーまたは「アクセス禁止」エラーを取得します。
+- **考えられる原因**：同じコンピューターで複数のMicrosoftアカウント（たとえば、仕事用アカウントと個人用outlook.comアカウント）を使用している場合、ブラウザは資格情報をキャッシュし、次の機会を与えずに自動的にサインインすることがあります別のアカウントを選択してください。
+- **考えられる解決策**：すべてのブラウザーセッションですべてのMicrosoftアカウントからサインアウトしてブラウザーキャッシュをクリアするか、ブラウザーで*プライベートブラウジング*セッションを開いて、それを使用してラボを完了してください。または、2番目のブラウザーをインストールして使用します。コンピューティングインスタンスを接続している場合は、コンピューティングインスタンスを再起動してください。認定学習パートナーを通じてこのコースを受講している場合は、ブラウザーがインストールされたWindows 10仮想マシンで構成されるホストされたラボ環境が提供される場合があります。
 
-## Azure Machine Learning studio stops responding
+## Azure Machine Learning Studioが応答を停止する
 
-- **Problem**: While working in Azure Machine Learning studio, the user interface becomes unresponsive.
-- **Possible Cause**: Azure Machine Learning may sign you out automatically after a period of time.
-- **Possible Solution**: Refreshing the page usually forces you to reauthenticate, and re-establishes your session.
+- **問題**：Azure Machine Learningスタジオでの作業中、ユーザーインターフェイスが応答しなくなります。
+- **考えられる原因**：Azure Machine Learningは、一定期間後に自動的にサインアウトする場合があります。
+- **可能な解決法**：通常、ページを更新すると、強制的に再認証され、セッションが再確立されます。
 
-## I see a *kernel error* in a Jupyter notebook
+## Jupyterノートブックに*Kernel error*が表示される
 
-- **Problem**: While working in a Jupyter notebook, a *kernel error* message is displayed and you can't save the notebook.
-- **Possible Cause**: Jupyter may sign you out automatically after a period of time.
-- **Possible Solution**: Switch to the browser tab containing the Jupyter home page, and refresh it. This forces you to reauthenticate, and re-establishes your session.
+- **問題**：Jupyterノートブックで作業しているときに、*カーネルエラー*メッセージが表示され、ノートブックを保存できません。
+- **考えられる原因**：Jupyterは、一定期間後に自動的にサインアウトする場合があります。
+- **考えられる解決策**：Jupyterホームページを含むブラウザータブに切り替えて、更新します。これにより、強制的に再認証され、セッションが再確立されます。
 
-## The terminal in Jupyter is blank
+## Jupyterのターミナルは空白です
 
-- **Problem**: Opening a new terminal in Jupyter just displays a black screen.
-- **Possible Cause**: There may be issues with some browsers.
-- **Possible Solution**: Click in the black screen and press ENTER - this may force the screen to refresh and display the terminal prompt. If that doesn't work, try installing a second browser and use that, or if you are taking this course through an authorized learning partner, you may be provided with a hosted lab environment that consists of a Windows 10 virtual machine with a browser installed - if so, use it.
+- **問題**：Jupyterで新しいターミナルを開くと、黒い画面が表示されるだけです。
+- **考えられる原因**：一部のブラウザに問題がある可能性があります。
+- **考えられる解決策**：黒い画面をクリックしてEnterキーを押します。これにより、画面が強制的に更新され、ターミナルプロンプトが表示される場合があります。それでもうまくいかない場合は、2番目のブラウザーをインストールして使用してみてください。または、認定コースを通じてこのコースを受講している場合は、ブラウザーがインストールされたWindows 10仮想マシンで構成されるホストされたラボ環境が提供されることがあります-その場合、それを使用します。
 
-## Visual Studio Online doesn't open
+## Visual Studio Onlineが開かない
 
-- **Problem**: Opening Visual Studio Online doesn't display the Visual Studio interface.
-- **Possible Cause**: There may be issues with some browsers.
-- **Possible Solution**: Install a second browser and use that. If you are taking this course through an authorized learning partner, you may be provided with a hosted lab environment that consists of a Windows 10 virtual machine with a browser installed - if so, use it.
+- **問題**：Visual Studio Onlineを開くと、Visual Studioインターフェイスが表示されません。
+- **考えられる原因**：一部のブラウザに問題がある可能性があります。
+- **考えられる解決策**：2番目のブラウザーをインストールして使用します。認定学習パートナーを通じてこのコースを受講している場合は、ブラウザーがインストールされたWindows 10仮想マシンで構成されるホストされたラボ環境が提供される場合があります。
 
-## I get unexpected Python package errors when running code
+## コードを実行すると予期しないPythonパッケージエラーが発生する
 
-- **Problem**: Code doesn't run as expected, but results in an error indicating an issue with Python packages.
-- **Possible Cause**: There are frequent updates to the Azure Machine Learning Python SDK, and it depends on numerous other Pythn packages. It's possible that the required version of a Python package is not installed.
-- **Possible Solution**: Try using the following command to force a reinstall of Azure Machine Learning SDK components and dependencies.
+- **問題**：コードは期待どおりに実行されませんが、Pythonパッケージの問題を示すエラーが発生します。
+- **考えられる原因**：Azure Machine Learning Python SDKには頻繁に更新があり、他の多くのPythnパッケージに依存しています。 Pythonパッケージの必要なバージョンがインストールされていない可能性があります。
+- **考えられる解決策**：次のコマンドを使用して、Azure Machine Learning SDKコンポーネントと依存関係を強制的に再インストールしてください。
 
     ```bash
     pip install --upgrade --force-reinstall azureml-sdk[notebooks,automl,explain]
     ```
 
-## I get time-outs or spurious errors when using Azure Machine Learning
+## Azure Machine Learningを使用するとタイムアウトまたは偽のエラーが発生します
 
-- **Problem**: Unexpected time-outs or other errors occur.
-- **Possible Cause**: Azure Machine Learning is a cloud service, and as such it is dependent on other network services. Additionally, many features in Azure Machine Learning are currently in preview. Complete outages are rare, but intermittant errors can occur. There may be a transient issue with the service or network.
-- **Possible Solution**: If something doesn't work, and you've tried everything you can think of; try leaving it for a while and try again later. You can check for Azure status at [https://status.azure.com/en-us/status](https://status.azure.com/en-us/status), and you can check for recent issues in the Azure ML SDK at [https://social.msdn.microsoft.com/Forums/home?forum=AzureMachineLearningService](https://social.msdn.microsoft.com/Forums/home?forum=AzureMachineLearningService).
+- **問題**：予期しないタイムアウトまたはその他のエラーが発生します。
+- **考えられる原因**：Azure Machine Learningはクラウドサービスであるため、他のネットワークサービスに依存しています。さらに、Azure Machine Learningの多くの機能が現在プレビュー中です。完全な停止はまれですが、断続的なエラーが発生する可能性があります。サービスまたはネットワークに一時的な問題がある可能性があります。
+- **考えられる解決策**：何かがうまくいかず、考えられるすべてを試した場合。しばらくそのままにして、後でもう一度やり直してください。 Azureの状態は[https://status.azure.com/en-us/status](https://status.azure.com/en-us/status)で確認できます。また、最近のAzure ML SDK問題は[https://social.msdn.microsoft.com/Forums/home?forum=AzureMachineLearningService](https://social.msdn.microsoft.com/Forums/home?forum=AzureMachineLearningService)にあります。
