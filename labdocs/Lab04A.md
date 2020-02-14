@@ -1,57 +1,57 @@
-# Lab 4A: Working with Datastores
+# Lab 4A: データストアの使用
 
-Although it's fairly common for data scientists to work with data on their local file system, in an enterprise environment it can be more effective to store the data in a central location where multiple data scientists can access it. In this lab, you'll store data in the cloud, and use an Azure Machine Learning *datastore* to access it.
+データサイエンティストがローカルファイルシステムのデータを操作することはかなり一般的ですが、エンタープライズ環境では、複数のデータサイエンティストがアクセスできる中央の場所にデータを保存する方が効果的です。このラボでは、データをクラウドに保存し、Azure Machine Learning * datastore *を使用してアクセスします。
 
-## Before You Start
+## 始める前に
 
-Before you start this lab, ensure that you have completed [Lab 1A](Lab01A.md) and [Lab 1B](Lab01B.md), which include tasks to create the Azure Machine Learning workspace and other resources used in this lab.
+このラボを開始する前に、[ラボ1A](Lab01A.md)および[ラボ1B](Lab01B.md)を完了していることを確認してください。これらには、このラボで使用するAzure Machine Learningワークスペースおよびその他のリソースを作成するタスクが含まれています。
 
-## Task 1: Create an Azure Storage Container
-You can use many kinds of Azure data source in Azure Machine Learning. In this lab, you'll create an Azure Storage account that includes a blob container.
+## Task 1: Azureストレージコンテナーを作成する
+Azure Machine Learningでは、さまざまな種類のAzureデータソースを使用できます。このラボでは、blobコンテナーを含むAzureストレージアカウントを作成します。
 
-1. Sign into the [Azure portal](https://portal.azure.com), and open the resource group containing your Azure Machine Learning workspace. Note that this already contains an Azure Storage account that was created with your workspace.
+1. [Azureポータル](https://portal.azure.com)にサインインし、Azure Machine Learningワークスペースを含むリソースグループを開きます。これには、ワークスペースで作成されたAzureストレージアカウントが既に含まれていることに注意してください。
 
-    >**Note**: The storage account created with your workspace is used by the service to store configuration data, notebooks, registered models, and so on. You can also use it to store data for experimentation and model training, but in many cases you'll want to manage this data separately.
+    >**Note**: ワークスペースで作成されたストレージアカウントは、構成データ、ノートブック、登録済みモデルなどを保存するためにサービスによって使用されます。また、実験およびモデルトレーニング用のデータを保存するために使用できますが、多くの場合、このデータを個別に管理する必要があります。
 
-2. Add a new **Storage account** to the resource group with the following settings:
+2. 次の設定で、リソースグループに新しい**Storage Account**を追加します:
 
-    - **Storage account name**: A unique name.
-    - **Location**: The same location as your workspace
-    - **Performance**: Standard
+    - **Storage account name**: 一意の名前。
+    - **Location**: ワークスペースと同じ場所
+    - **Performance**: Standar 
     - **Account kind**: StorageV2 (general purpose v2)
     - **Access tier (default)**: Hot
-    - Use the default settings for networking
+    - ネットワークのデフォルト設定を使用する
 
-3. Wait for the storage account to be created, and then go to the resource in the portal.
-4. Open the **Containers** page for the storage account, and add a container with the following settings:
+3. ストレージアカウントが作成されるのを待ってから、ポータルのリソースに移動します。
+4. ストレージアカウントの**Containers**ページを開き、次の設定でコンテナーを追加します。
 
     - **Name**: aml-data
     - **Public access level**: Private (no anonymous access)
 
-5. After your container has been added, view the **Access Keys** page for your storage account and copy **key1** to the clipboard - you will need this in the next task.
+5. コンテナを追加したら、ストレージアカウントの**Access Key**ページを表示し、**key1**をクリップボードにコピーします。これは次のタスクで必要になります。
 
-## Task 2: Register an Azure Machine Learning Datastore
+## Task 2: Azure Machine Learning Datastoreを登録する
 
-Now that you've created a storage container, you can register it as a datastore in your Azure Machine Learning workspace.
+ストレージコンテナーを作成したら、Azure Machine Learningワークスペースでデータストアとして登録できます。
 
 1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Datastores** page for your workspace. The pre-defined datastores will be listed.
-2. Create a new datastore with the following settings:
+2. 次の設定で新しいデータストアを作成します:
     - **Datastore name**: aml_data
     - **Datastore type**: Azure Blob Storage
     - **Account selection method**: From Azure subscription
     - **Subscription ID**: *Your Azure subscription*
-    - **Storage account**: *The storage account you created in the previous task*
+    - **Storage account**: *前のタスクで作成したストレージアカウント*
     - **Blob container**: aml-data
     - **Authentication type**: Account key
-    - **Account key**: *Paste the key you copied in the previous task*
-3. After the datastore has been added, verify that it is listed on the **Datastores** page.
+    - **Account key**: *前のタスクでコピーしたキーを貼り付けます*
+3. データストアを追加したら、[**Datastore**]ページにリストされていることを確認します。
 
-## Task 3: Use the Azure Machine Learning SDK to access the Datastore
+## Task 3: Azure Machine Learning SDKを使用してデータストアにアクセスする
 
-In this task, you'll use the Azure Machine Learning SDK to upload and download data to and from your datastore.
+このタスクでは、Azure Machine Learning SDKを使用して、データストアとの間でデータをアップロードおよびダウンロードします。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Compute** page for your workspace; and on the **Compute Instances** tab, ensure your compute instance is running. If not, start it.
-2. When the compute instance is running, click the **Jupyter** link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, in the **Users/DP100** folder, open the **04A - Working with Datastores.ipynb** notebook. Then read the notes in the notebook, running each code cell in turn.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Compute**ページを表示します。 [** Compute Instances **]タブで、コンピューティングインスタンスが実行されていることを確認します。そうでない場合は、開始します。
+2. コンピューティングインスタンスの実行中に、**Jupyter**リンクをクリックして、新しいブラウザータブでJupyterホームページを開きます。
+3. Jupyterホームページの**Users/DP100**フォルダーで、**04A-Working with Datastores.ipynb**ノートブックを開きます。次に、ノートブックのメモを読み、各コードセルを順番に実行します。
 
-> **Note**: If you intend to continue straight to the [next exercise](Lab04B.md), leave your compute instance running. If you're taking a break, you might want to close all Jupyter tabs and **Stop** your compute instance to avoid incurring unnecessary costs.
+> **Note**: [次の演習](Lab04B.md)に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩している場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。
