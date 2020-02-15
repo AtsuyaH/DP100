@@ -86,7 +86,7 @@ Visual Studio Online（またはVisual Studio Codeのローカルインストー
 
 1. Visual Studio Onlineで[**拡張機能**]タブ（⊞）をクリックし、「Azure Machine Learning」を検索します。次に、Microsoftの**Azure Machine Learning**拡張機能をインストールします。拡張機能がインストールされたら、**Reload Required**ボタンをクリックして、拡張機能を使用して環境をリロードします。
 2. Visual Studio Onlineで**Azure**タブ（**&Delta;**）をクリックし、**Azure Machine Learning**セクションでサブスクリプションとAzure Machine Learningワークスペースを展開します。
-3. ** Compute **を展開し、ワークスペースで作成した** aml-cluster **コンピューティングリソースが、** local **コンピューティングリソースと共にリストされていることを確認します。この場合、Visual Studio Onlineホスト環境を表します。ローカルコンピューティングおよびワークスペースで定義されたコンピューティングリソースでAzure Machine Learningコード実験を実行できます。
+3. **Compute**を展開し、ワークスペースで作成した**aml-cluster**コンピューティングリソースが、**local**コンピューティングリソースと共にリストされていることを確認します。この場合、Visual Studio Onlineホスト環境を表します。ローカルコンピューティングおよびワークスペースで定義されたコンピューティングリソースでAzure Machine Learningコード実験を実行できます。
 4. Visual Studio Onlineブラウザータブを閉じます。
 
 > **Note**: [次の演習]（Lab02A.md）に直接進む場合は、コンピューティングインスタンスを実行したままにします。休憩する場合は、すべてのJupyterタブを閉じてコンピューティングインスタンスを**停止**し、不要なコストが発生しないようにすることができます。
