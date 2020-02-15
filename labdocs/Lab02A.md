@@ -14,12 +14,12 @@ Designerを開始するには、最初にパイプラインを作成し、使用
 
 1. ワークスペースの[Azure Machine Learning studio](https://ml.azure.com)で、**Designer**ページを表示し、新しいパイプラインを作成します。
 2. [**設定**]ペインで、デフォルトのパイプライン名（**Pipeline-Created-on-date**）を**Visual Diabetes Training**（**設定**ペインが表示されていない場合、上部のパイプライン名の横にある**⚙**アイコンをクリックします）。
-3. パイプラインを実行する計算ターゲットを指定する必要があることに注意してください。 [**設定**]ペインで[**コンピューティングターゲットの選択**]をクリックし、前のラボで作成した**aml-cluster*コンピューティングターゲットを選択します。
+3. パイプラインを実行する計算ターゲットを指定する必要があることに注意してください。 [**設定**]ペインで[**コンピューティングターゲットの選択**]をクリックし、前のラボで作成した**aml-cluster**コンピューティングターゲットを選択します。
 4. デザイナーの左側で、**データセット**セクションを展開し、前の演習で作成した**diabetes dataset**データセットをキャンバスにドラッグします。
 5. キャンバスで**diabetes dataset**モジュールを選択し、その設定を表示します。 [**output**]タブで、[**visualize**]アイコン（縦棒グラフに似ています）をクリックします。
 6. データのスキーマを確認し、さまざまな列の分布をヒストグラムとして表示できることに注意してください。次に、視覚エフェクトを閉じます。
 
-## Task 2: 変換を追加
+## Task 2: データ変換を追加
 
 モデルをトレーニングする前に、通常、いくつかの前処理変換をデータに適用する必要があります。
 
@@ -35,7 +35,7 @@ column names:
 
     > **Note**: 数値列を正規化して同じスケールにし、値が大きい列がモデルトレーニングを支配しないようにします。通常、このような前処理変換の全体を適用してトレーニング用のデータを準備しますが、この演習では簡単に説明します。
 
-3. これで、トレーニングと検証のためにデータを個別のデータセットに分割する準備ができました。左側のペインの**Data Transformations**セクションで、**Split Data**モジュールを**Normalize Data**モジュールの下のキャンバスにドラッグします。次に、**Normalize Data**モジュールの* Transformed Dataset*（左）出力を**Split Data**モジュールの入力に接続します。
+3. これで、トレーニングと検証のためにデータを個別のデータセットに分割する準備ができました。左側のペインの**Data Transformations**セクションで、**Split Data**モジュールを**Normalize Data**モジュールの下のキャンバスにドラッグします。次に、**Normalize Data**モジュールの*Transformed Dataset*（左）出力を**Split Data**モジュールの入力に接続します。
 
 4. **Split Data**モジュールを選択し、次のように設定します:
     * **Splitting mode** Split Rows
@@ -48,7 +48,7 @@ column names:
 データを準備し、トレーニングデータセットと検証データセットに分割したら、パイプラインを構成してモデルをトレーニングおよび評価できます。
 
 1. Expand the **Model Training** section in the pane on the left, and drag a **Train Model** module to the canvas, under the **Split Data** module. Then connect the *Result dataset1* (left) output of the **Split Data** module to the *Dataset* (right) input of the **Train Model** module.
-1. 左側のペインの**Model Training**セクションを展開し、**Train Model**モジュールをキャンバスの**スプリットデータ**モジュールの下にドラッグします。次に、** Split Data **モジュールの* Result dataset1 *（左）出力を** Train Model **モジュールの* Dataset *（右）入力に接続します。
+1. 左側のペインの**Model Training**セクションを展開し、**Train Model**モジュールをキャンバスの**Split Data**モジュールの下にドラッグします。次に、**Split Data**モジュールの*Result dataset1*（左）出力を**Train Model**モジュールの*Dataset*（右）入力に接続します。
 
 2. トレーニング中のモデルは**Diabetic**値を予測するため、**Train Model**モジュールを選択し、設定を変更して**Label列**を**Diabetic**に設定します（大文字と小文字の区別！）
 
