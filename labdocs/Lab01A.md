@@ -24,12 +24,12 @@
 
 その名前が示すように、ワークスペースは、機械学習プロジェクトで作業するために必要なすべてのAzure ML資産を管理するための集中管理された場所です。
 
-1. [Azureポータル]（https://portal.azure.com）で、新しい** Machine Learning **リソースを作成し、一意のワークスペース名を指定して、** North Central US *に新しいリソースグループを作成します*または** UK South **地域。 ** Enterprise **ワークスペースエディションを選択します。
+1. [Azureポータル](https://portal.azure.com)で、新しい** Machine Learning **リソースを作成し、一意のワークスペース名を指定して、** North Central US *に新しいリソースグループを作成します*または** UK South **地域。 ** Enterprise **ワークスペースエディションを選択します。
 
 
-   > **Note**: ** North Central US **または** UK South **リージョンを使用できない場合、[Container Instances *]ではなく[Notebook VMs]を使用して、[限定プレビュー]のためにこのコースのラボを完了する必要があります。可用性]（https://docs.microsoft.com/azure/machine-learning/service/concept-compute-instance）。
+   > **Note**: **North Central US**または**UK South**リージョンを使用できない場合、[*Container Instances*]ではなく[*Notebook VMs*]を使用して、[限定プレビュー]のためにこのコースのラボを完了する必要があります。可用性](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-instance)。
    >
-   > Basicエディションのワークスペースは低コストですが、Auto ML、ビジュアルデザイナー、データドリフトモニタリングなどの機能は含まれません。詳細については、[Azure Machine Learningの価格設定]（https://azure.microsoft.com/en-us/pricing/details/machine-learning/）を参照してください。
+   > Basicエディションのワークスペースは低コストですが、Auto ML、ビジュアルデザイナー、データドリフトモニタリングなどの機能は含まれません。詳細については、[Azure Machine Learningの価格設定](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)を参照してください。
 
 2.ワークスペースとそれに関連するリソースが作成されたら、ポータルでワークスペースを表示します。
 
@@ -39,7 +39,7 @@ Azureポータルでワークスペース資産を管理できますが、デー
 
 > **Note**: Azure MLのWebベースのインターフェイスの名前は **Azure Machine Learning studio**です。ビジュアルデザイナーを使用して機械学習モデルを作成するための無料の**Azure Machine Learning Studio**製品もあるため、混乱するかもしれません。このビジュアルデザイナーのよりスケーラブルなバージョンは、新しいスタジオインターフェイスに含まれています。
 
-1. Azure Machine LearningワークスペースのAzureポータルブレードで、リンクをクリックして** Azure Machine Learning studio **を起動します。または、新しいブラウザタブで[https://ml.azure.com]（https://ml.azure.com）を開きます。プロンプトが表示されたら、前のタスクで使用したMicrosoftアカウントを使用してサインインし、Azureサブスクリプションとワークスペースを選択します。
+1. Azure Machine LearningワークスペースのAzureポータルブレードで、リンクをクリックして**Azure Machine Learning studio**を起動します。または、新しいブラウザタブで[https://ml.azure.com]（https://ml.azure.com）を開きます。プロンプトが表示されたら、前のタスクで使用したMicrosoftアカウントを使用してサインインし、Azureサブスクリプションとワークスペースを選択します。
 
 1. ワークスペースのAzure Machine Learning Studioインターフェイスを表示します。ここからワークスペース内のすべてのアセットを管理できます。
 
