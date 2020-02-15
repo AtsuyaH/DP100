@@ -27,9 +27,7 @@
 1. [Azureポータル](https://portal.azure.com)で、新しい** Machine Learning **リソースを作成し、一意のワークスペース名を指定して、** North Central US *に新しいリソースグループを作成します*または** UK South **地域。 ** Enterprise **ワークスペースエディションを選択します。
 
 
-   > **Note**: **North Central US**または**UK South**リージョンを使用できない場合、[*Container Instances*]ではなく[*Notebook VMs*]を使用して、[限定プレビュー]のためにこのコースのラボを完了する必要があります。可用性](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-instance)。
-   >
-   > Basicエディションのワークスペースは低コストですが、Auto ML、ビジュアルデザイナー、データドリフトモニタリングなどの機能は含まれません。詳細については、[Azure Machine Learningの価格設定](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)を参照してください。
+   > **Note**: Basicエディションのワークスペースは低コストですが、Auto ML、ビジュアルデザイナー、データドリフトモニタリングなどの機能は含まれません。詳細については、[Azure Machine Learningの価格設定](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)を参照してください。
 
 2.ワークスペースとそれに関連するリソースが作成されたら、ポータルでワークスペースを表示します。
 
