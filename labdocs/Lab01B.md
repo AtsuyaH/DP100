@@ -26,7 +26,7 @@
 
     ```bash
     cd Users
-    git clone https://github.com/MicrosoftLearning/DP100
+    git clone https://github.com/tottokug/DP100
     ```
 
 5. コマンドが完了したら、ターミナルタブを閉じて、Jupyterノートブックファイルエクスプローラーでホームページを表示します。次に、**Users**フォルダーを開きます。このフォルダーには**DP100**フォルダーが含まれている必要があり、このラボの残りの部分で使用するファイルが含まれています。
