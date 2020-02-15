@@ -76,7 +76,7 @@ Python開発環境ができたので、その中でAzure Machine Learning SDKを
 3. ダウンロードした** config.json **ファイルをテキストエディターで開き、その内容をクリップボードにコピーします。このファイルには、ワークスペースに接続するために必要な構成情報が含まれています。
 4. Visual Studio Onlineで、VS Onlineワークスペースのルートフォルダーに**config.json**という名前の新しいファイルを作成します。
 5. コピーした構成情報をVisual Studio Onlineワークスペースの新しいconfig.jsonファイルに貼り付けて保存します。
-6. Visual Studio Onlineで、** 01B-Azure ML SDK.ipynb **ノートブックの概要を開きます。これは、Visual Studio Online内のJupyter Notebookインターフェイスに読み込まれます。 Jupyter Notebooksインターフェースを初めて使用する場合、ロードに時間がかかる場合があります。2つのペインが簡単に表示される場合があります。
+6. Visual Studio Onlineで、**01B-Azure ML SDK.ipynb**ノートブックの概要を開きます。これは、Visual Studio Online内のJupyter Notebookインターフェイスに読み込まれます。 Jupyter Notebooksインターフェースを初めて使用する場合、ロードに時間がかかる場合があります。2つのペインが簡単に表示される場合があります。
 7. ノートブックがロードされたら、Visual Studio Onlineインターフェースの左下で、現在のPython仮想環境をクリックします。これは、リポジトリの構成設定に基づいて**Python 3.5.3**に変更されているはずですが、とにかくその仮想環境を再度選択します（ノートブックは、メタデータに示されている別のバージョンで作成されています）。
 8. Azure Machine Learning Notebook VM Jupyter環境で行ったように、ノートブックのノートを読み、各コードセルを順番に実行します。
 
