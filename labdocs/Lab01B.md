@@ -72,7 +72,7 @@ Azure Machine Learningのコンピューティングインスタンスは、独�
 Python開発環境ができたので、その中でAzure Machine Learning SDKを使用できます。最初に、Azure Machine Learningワークスペースに接続するために必要な構成情報を取得する必要があります。
 
 1. 新しいブラウザータブで、[https://portal.azure.com](https://portal.azure.com)でAzureポータルを開き、必要に応じてサインインします。
-2. 前のラボで作成したAzure Machine Learningワークスペースリソースを開き、**概要**ページで**Download config.json**をクリックして、ファイルをローカルコンピューターにダウンロードします。
+2. 前のラボで作成したAzure Machine Learningワークスペースリソースを開き、**概要**ページで**config.jsonをダウンロード**をクリックして、ファイルをローカルコンピューターにダウンロードします。
 3. ダウンロードした** config.json **ファイルをテキストエディターで開き、その内容をクリップボードにコピーします。このファイルには、ワークスペースに接続するために必要な構成情報が含まれています。
 4. Visual Studio Onlineで、VS Onlineワークスペースのルートフォルダーに**config.json**という名前の新しいファイルを作成します。
 5. コピーした構成情報をVisual Studio Onlineワークスペースの新しいconfig.jsonファイルに貼り付けて保存します。
