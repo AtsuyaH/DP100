@@ -17,7 +17,7 @@ Azure Machine Learningでは、さまざまな種類のAzureデータソース�
 
     - **Storage account name**: 一意の名前。
     - **Location**: ワークスペースと同じ場所
-    - **Performance**: Standar 
+    - **Performance**: Standard
     - **Account kind**: StorageV2 (general purpose v2)
     - **Access tier (default)**: Hot
     - ネットワークのデフォルト設定を使用する
@@ -34,7 +34,7 @@ Azure Machine Learningでは、さまざまな種類のAzureデータソース�
 
 ストレージコンテナーを作成したら、Azure Machine Learningワークスペースでデータストアとして登録できます。
 
-1. In [Azure Machine Learning studio](https://ml.azure.com), view the **Datastores** page for your workspace. The pre-defined datastores will be listed.
+1. [Azure Machine Learning studio](https://ml.azure.com)で、ワークスペースの**Datastores**ページを表示します。事前定義されたデータストアがリストされます。
 2. 次の設定で新しいデータストアを作成します:
     - **Datastore name**: aml_data
     - **Datastore type**: Azure Blob Storage
