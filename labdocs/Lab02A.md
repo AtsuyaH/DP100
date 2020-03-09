@@ -47,7 +47,6 @@ column names:
 
 データを準備し、トレーニングデータセットと検証データセットに分割したら、パイプラインを構成してモデルをトレーニングおよび評価できます。
 
-1. Expand the **Model Training** section in the pane on the left, and drag a **Train Model** module to the canvas, under the **Split Data** module. Then connect the *Result dataset1* (left) output of the **Split Data** module to the *Dataset* (right) input of the **Train Model** module.
 1. 左側のペインの**Model Training**セクションを展開し、**Train Model**モジュールをキャンバスの**Split Data**モジュールの下にドラッグします。次に、**Split Data**モジュールの*Result dataset1*（左）出力を**Train Model**モジュールの*Dataset*（右）入力に接続します。
 
 2. トレーニング中のモデルは**Diabetic**値を予測するため、**Train Model**モジュールを選択し、設定を変更して**Label列**を**Diabetic**に設定します（大文字と小文字の区別！）
