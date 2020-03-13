@@ -24,7 +24,7 @@
     * **Compute name**: aks-cluster
     * **Kubernetes Service**: Create new
     * **Region**: *Any available region*
-    * **Virtual Machine size**: Standard_DS2_v2
+    * **Virtual Machine size**: Standard_F2s_v2
     * **Cluster purpose**: Dev-test
     * **Number of nodes**: 3
     * **Network configuration**: Basic
