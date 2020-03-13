@@ -35,7 +35,7 @@ column names:
 
     > **Note**: 数値列を正規化して同じスケールにし、値が大きい列がモデルトレーニングを支配しないようにします。通常、このような前処理変換の全体を適用してトレーニング用のデータを準備しますが、この演習では簡単に説明します。
 
-3. これで、トレーニングと検証のためにデータを個別のデータセットに分割する準備ができました。左側のペインの**Data Transformations**セクションで、**Split Data**モジュールを**Normalize Data**モジュールの下のキャンバスにドラッグします。次に、**Normalize Data**モジュールの*Transformed Dataset*（左）出力を**Split Data**モジュールの入力に接続します。
+3. 左側のペインの**Data Transformations**セクションで、**Split Data**モジュールを**Normalize Data**モジュールの下のキャンバスにドラッグします。次に、**Normalize Data**モジュールの*Transformed Dataset*（左）出力を**Split Data**モジュールの入力に接続します。これで、トレーニングと検証のためにデータを個別のデータセットに分割する準備ができました。
 
 4. **Split Data**モジュールを選択し、次のように設定します:
     * **Splitting mode** Split Rows
